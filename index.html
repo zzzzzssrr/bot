@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه هکری</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            overflow-y: auto;
+            animation: backgroundAnimation 10s infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-color: #0d0d0d; }
+            50% { background-color: #1a1a1a; }
+            100% { background-color: #0d0d0d; }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
+
+        .header-image, .product-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .product {
+            margin: 20px 0;
+        }
+
+        .button {
+            background-color: #e63946;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover { background-color: #d62839; }
+        .button:active { transform: scale(0.95); }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(0); }
+            25% { transform: translate(-5px); }
+            50% { transform: translate(5px); }
+            75% { transform: translate(-5px); }
+        }
+
+        .button {
+            animation: shake 3s infinite;
+        }
+
+        .product-page {
+            display: none;
+            text-align: center;
+        }
+
+        .product-page h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        }
+
+        .product-page .buy-button, .product-page .back-button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .product-page .buy-button {
+            background-color: #28a745;
+            transition: background-color 0.3s;
+        }
+
+        .product-page .buy-button:hover { background-color: #218838; }
+
+        .product-page .back-button {
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+
+        .product-page .back-button:hover { background-color: #0056b3; }
+
+        .glowing-text {
+            font-size: 2em;
+            color: #ff69b4;
+            text-shadow: 0 0 5px rgba(255, 105, 180, 1), 
+                         0 0 10px rgba(255, 105, 180, 1), 
+                         0 0 15px rgba(255, 105, 180, 1);
+            animation: glow 1.5s infinite alternate;
+            margin-top: 20px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 105, 180, 1), 
+                             0 0 10px rgba(255, 105, 180, 1), 
+                             0 0 15px rgba(255, 105, 180, 1);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 105, 180, 1), 
+                             0 0 30px rgba(255, 105, 180, 1), 
+                             0 0 40px rgba(255, 105, 180, 1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="http://localhost/web/New/aa.jpg" alt="تصویر هکری" class="header-image">
+    <h1>Shop 369</h1>
+    
+    <div class="product" id="product1">
+        <img src="http://localhost/web/New/product1.jpg" alt="محصول ۱" class="product-image">
+        <h2>محصول ۱</h2>
+        <p>توضیحات مختصر در مورد محصول ۱</p>
+        <button class="button" onclick="showProduct('محصول ۱')">خرید محصول</button>
+    </div>
+    
+    <div class="product" id="product2">
+        <img src="http://localhost/web/New/product2.jpg" alt="محصول ۲" class="product-image">
+        <h2>محصول ۲</h2>
+        <p>توضیحات مختصر در مورد محصول ۲</p>
+        <button class="button" onclick="showProduct('محصول ۲')">خرید محصول</button>
+    </div>
+    
+    <div class="product" id="product3">
+        <img src="http://localhost/web/New/product3.jpg" alt="محصول ۳" class="product-image">
+        <h2>محصول ۳</h2>
+        <p>توضیحات مختصر در مورد محصول ۳</p>
+        <button class="button" onclick="showProduct('محصول ۳')">خرید محصول</button>
+    </div>
+
+    <div class="product-page" id="productPage">
+        <h2 id="productTitle">محصول</h2>
+        <button class="buy-button">خرید محصول</button>
+        <br>
+        <button class="back-button" onclick="goBack()">برگشت به صفحه اصلی</button>
+    </div>
+
+    <script>
+        function showProduct(productName) {
+            document.querySelectorAll('.product').forEach(function(product) {
+                product.style.display = 'none';
+            });
+            document.getElementById('productTitle').innerText = productName;
+            document.getElementById('productPage').style.display = 'block';
+        }
+
+        function goBack() {
+            document.getElementById('productPage').style.display = 'none';
+            document.querySelectorAll('.product').forEach(function(product) {
+                product.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
